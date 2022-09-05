@@ -1,0 +1,12 @@
+{% assign finalFaqsList = "" | split: ',' %}
+{% assign newFaqsList = '' %}
+
+{% for collection in collections %}
+    {% for faqs in collection.metafields.suncare.collection_faq.value %}
+        {% assign newFaqsList = newFaqsList | append: ',' | append: faqs.content %}
+    {% endfor%}
+{% endfor%}
+
+{% assign newFaqsList = newFaqsList | remove_first: ',' | split: ',' %}
+
+{% assign joinedFaqsLists = finalFaqsList | concat: newFaqsList %}
