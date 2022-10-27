@@ -1,0 +1,2 @@
+    $query = new WP_Query( array('post_type' => 'events','meta_query' => (array('key' => 'associated_project','compare' => '=','value' => '263',))  ));
+    $numEvents =  $query->found_posts;

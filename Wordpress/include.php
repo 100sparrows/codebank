@@ -1,0 +1,1 @@
+include(locate_template('parts/loop-resources-archive.php'));

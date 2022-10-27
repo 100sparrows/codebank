@@ -1,0 +1,24 @@
+//Change order of posts using a meta key
+//https://wordpress.stackexchange.com/questions/48652/sort-custom-posts-in-archive-php-via-meta-key
+
+function change_order_for_events( $query ) {
+    //only show future events and events in the last 24hours
+    $yesterday = current_time('timestamp') - 24*60*60; 
+
+    if ( $query->is_main_query() && (is_tax('event_type') || is_post_type_archive('wr_event')) ) {
+        $query->set( 'meta_key', '_wr_event_date' );
+        $query->set( 'orderby', 'meta_value_num' );
+        $query->set( 'order', 'ASC' );
+
+        //Get events after 24 hours ago
+        $query->set( 'meta_value', $yesterday );
+        $query->set( 'meta_compare', '>' );
+
+       //Get events before now
+       //$query->set( 'meta_value', current_time('timestamp') );
+       //$query->set( 'meta_compare', '<' );
+    }
+
+}
+
+add_action( 'pre_get_posts', 'change_order_for_events' );

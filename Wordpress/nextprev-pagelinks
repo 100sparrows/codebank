@@ -1,0 +1,4 @@
+<div class="navlinks single">
+            <?php previous_post_link('<span class="prev trim-text">%link</span>', '%title'); ?>
+            <?php next_post_link('<span class="next trim-text">%link</span>', '%title'); ?>
+</div>
