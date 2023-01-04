@@ -1,0 +1,33 @@
+// Mixins and functions
+$vertical-gutters: (
+  small: (
+    'small': (rem-calc(10)),
+    'medium': (rem-calc(20)),
+    'large': (rem-calc(30)),
+  ),
+  medium: (
+    'small': (rem-calc(20)),
+    'medium': (rem-calc(30)),
+    'large': (rem-calc(40)),
+  ),
+);
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+@mixin vertical-margin($size, $position: ''){
+  @each $key in map-keys($vertical-gutters) {
+    @include breakpoint($key){
+      @if $position != '' {
+        margin-#{$position}: map-deep-get($vertical-gutters, $size, $key);
+      } @else {
+        margin-top: map-deep-get($vertical-gutters, $size, $key);
+        margin-bottom: map-deep-get($vertical-gutters, $size, $key);
+      }
+    }
+  }
+}
