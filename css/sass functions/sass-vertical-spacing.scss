@@ -10,6 +10,10 @@ $vertical-gutters: (
     'medium': (rem-calc(30)),
     'large': (rem-calc(40)),
   ),
+  large: ('small': (rem-calc(20)),
+    'medium': (rem-calc(30)),
+    'large': (rem-calc(40)),
+  ),
 );
 @function map-deep-get($map, $keys...) {
   @each $key in $keys {
@@ -31,3 +35,4 @@ $vertical-gutters: (
     }
   }
 }
+//ensure you have a large breakpoint defined.

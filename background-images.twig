@@ -1,0 +1,28 @@
+     {% if model.secondaryImages %}
+          {% set secondaryImageBackground %}
+          .page__content::after {
+            background-image: url("{{ url('/image', {'dealerId': dealer.id, 'typeId': model.secondaryImages[0].object_type_id, 'fileName': model.secondaryImages[0].filename}) }}?width=639&height=500&crop=auto");
+          }
+          @media print, screen and (min-width: 40em) {
+            .page__content::after {
+              background-image: url("{{ url('/image', {'dealerId': dealer.id, 'typeId': model.secondaryImages[0].object_type_id, 'fileName': model.secondaryImages[0].filename}) }}?width=1023&height=500&crop=auto");
+            }
+          }
+          @media print, screen and (min-width: 64em) {
+            .page__content::after {
+              background-image: url("{{ url('/image', {'dealerId': dealer.id, 'typeId': model.secondaryImages[0].object_type_id, 'fileName': model.secondaryImages[0].filename}) }}?width=1199&height=500&crop=auto");
+            }
+          }
+          @media print, screen and (min-width: 75em) {
+            .page__content::after {
+              background-image: url("{{ url('/image', {'dealerId': dealer.id, 'typeId': model.secondaryImages[0].object_type_id, 'fileName': model.secondaryImages[0].filename}) }}?width=1439&height=500&crop=auto");
+            }
+          }
+          @media print, screen and (min-width: 90em) {
+            .page__content::after {
+              background-image: url("{{ url('/image', {'dealerId': dealer.id, 'typeId': model.secondaryImages[0].object_type_id, 'fileName': model.secondaryImages[0].filename}) }}?width=1920&height=500&crop=auto");
+            }
+          }
+          {% endset %}
+          {{ this.registerCss(secondaryImageBackground) }}
+        {% endif %}

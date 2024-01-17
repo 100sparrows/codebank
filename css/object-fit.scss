@@ -1,0 +1,12 @@
+//object fit goes on the element that is being it
+
+picture{
+    position: relative;
+}
+img{
+    object-fit: cover;
+    object-position:center;
+    position: absolute;
+    inset:0;
+    height: 100%;
+}

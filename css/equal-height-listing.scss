@@ -1,0 +1,12 @@
+.listing--block{
+  .slick-track{
+    display: flex;
+    .slick-slide{
+      height: initial;//relevant if this is set to 100% as it will shrink to content
+      display: flex;
+    }
+    .block{
+      width:100%;
+    }
+  }
+}

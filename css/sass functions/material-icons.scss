@@ -1,0 +1,23 @@
+//fonts.googleapis.com/icon?family=Material+Icons',
+//fonts.googleapis.com/icon?family=Material+Icons+Outlined',
+
+@mixin material-icon($icon){
+    font-family: 'Material Icons';
+    font-size: 1em;
+    line-height: 1;
+    opacity: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content:$icon;
+
+}
+@mixin material-icon-outlined($icon) {
+    font-family: 'Material Icons Outlined';
+    font-size: 1em;
+    line-height: 1;
+    opacity: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: $icon;
+
+}

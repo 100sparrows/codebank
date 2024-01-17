@@ -1,0 +1,48 @@
+@mixin slanted-top($direction:up,$color:$body-background){
+    position: relative;
+    padding-top: 4vw;
+    &:before{
+        position: absolute;
+        top: -1px;
+        left: 0;
+        content: "";
+        height: 4vw;
+        width: 100%;
+        display: block;
+        background-color: $color;
+        @if $direction == 'up'{
+            clip-path: polygon(0 0,
+                0% 100%,
+                100% 0);
+        }
+        @if $direction =='down' {
+            clip-path: polygon(100% 0,
+                0 0,
+                100% 100%);
+        }
+    }
+}
+@mixin slanted-bottom($direction: up, $color: $body-background) {
+    position: relative;
+    &:after {
+        position: absolute;
+        bottom:-1px;
+        left:0;
+        content: "";
+        height: 4vw;
+        width: 100%;
+        display: block;
+        background-color: $color;
+
+        @if $direction =='up' {
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        }
+
+        @if $direction =='down' {
+            clip-path: polygon(0 100%, 0 0, 100% 100%);
+        }
+    }
+    & > *:last-child{
+        margin-bottom:4vw;
+    }
+}

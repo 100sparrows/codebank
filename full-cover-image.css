@@ -1,0 +1,18 @@
+.block--vehicle-block{
+    position: relative;
+    aspect-ratio: 457 / 735;
+    max-height: 735px;
+    .block__primary-images{
+        position: relative;
+        width:100%;
+        height:100%;
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @include overlay;
+    }
+}

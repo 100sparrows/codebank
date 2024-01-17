@@ -1,0 +1,16 @@
+https://www.freecodecamp.org/news/make-a-css-only-ribbon/
+ <div class="card"><div class="ribbon"><span>Finance available</span></div></div>
+.ribbon {
+    position: absolute;
+    background: $alert-color;
+    inset: auto 0 0 auto;
+    box-shadow: 0 0 0 999px $alert-color;
+    clip-path: inset(0 -100%);
+    transform: translate(-1.3%, -105%) rotate(-30deg);
+    span {
+      color: $white;
+      line-height: 1.3;
+      display: block;
+      padding: 0.3em 0;
+    }
+  }

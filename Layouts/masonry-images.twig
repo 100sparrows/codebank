@@ -1,0 +1,70 @@
+{# For use with Twig templates and sass. Can be extracyted to use in other environments #}
+  <style="text/scss">
+    .page__masonry-images{
+    @include grid-row($behavior: nest);
+      .masonry {
+        background:$primary-color;
+        ul {
+          list-style:none;
+          margin:0;
+          padding:0;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+          grid-auto-flow: dense;
+          grid-auto-rows: 327px;
+          @include breakpoint(medium){
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+          }
+          @include breakpoint(large) {
+            grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+          }
+          &>li{
+              grid-column: span 2;
+              grid-row: span 1;
+            }
+            &>li.minor {
+              grid-column: span 1;
+              grid-row: span 1;
+            }
+            &>li.major {
+              grid-column: span 2;
+              grid-row: span 2;
+            }
+            img, a{
+              display: block;
+              width:100%;
+              height:100%;
+              max-width:initial;
+              object-fit:cover;
+            }
+        }
+      }
+  }
+</style>
+{% if showroom.secondaryImages %}
+    <div class="page__masonry-images">
+        <div class="masonry">
+            <ul>
+                {% for image in showroom.secondaryImages %}
+                    {% set dtRatio = 760 / 545 %}
+                    {% set mRatio = 3 / 4 %}
+                    {% set minors = [2,3,8,9,14,15] %}
+                    {% set majors = [4,10,16, 22] %}
+                    <li class="{% if loop.index in minors %}minor{% elseif loop.index in majors %}major{% endif %}">
+                            <a href="{{ imageFileUrl(image, {'width': 480 }) }}" data-srcset="{{ imageFileUrl(image, {'width': 480 }) }} 480w, {{ imageFileUrl(image, {'width': 640 }) }} 640w, {{ imageFileUrl(image, {'width': 768 }) }} 768w, {{ imageFileUrl(image, {'width': 1024 }) }} 1024w, {{ imageFileUrl(image, {'width': 1200 }) }} 1200w, {{ imageFileUrl(image, {'width': 1440 }) }} 1440w" data-fancybox="masonry-image"{% if image.title %} data-caption="{{ image.title }}"{% endif %}>
+                            <picture>
+                            <!--[if IE 9]><video style="display: none;"><![endif]-->
+                            <source media="(min-width: 1600px)" srcset="{{ imageFileUrl(image, {'width': 1920, 'height': 1920 / dtRatio, 'crop': 'auto'}) }}">
+                            <source media="(min-width: 1400px)" srcset="{{ imageFileUrl(image, {'width': 1599, 'height': 1599 / dtRatio, 'crop': 'auto'}) }}">
+                            <source media="(min-width: 1024px)" srcset="{{ imageFileUrl(image, {'width': 1399, 'height': 1399 / dtRatio, 'crop': 'auto'}) }}">
+                            <source media="(min-width: 640px)" srcset="{{ imageFileUrl(image, {'width': 1023, 'height': 1023 / dtRatio, 'crop': 'auto'}) }}">
+                            <!--[if IE 9]></video><![endif]-->
+                            <img src="{{ imageFileUrl(image, {'width': 639, 'height': 639 / mRatio, 'crop': 'auto'}) }}" alt="{% if image.alt_text %}{{ image.alt_text }}{% else %}{{ showroom.title }}{% endif %}">
+                        </picture>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}
