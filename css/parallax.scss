@@ -1,0 +1,15 @@
+.media--parallax {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    @include breakpoint(small down){
+        background-attachment: scroll;//turn off parallax for small tablets and mobiles
+    }
+    &.page__media--secondary-image{
+        width:100%;
+        aspect-ratio:1440/330;
+        display: grid;
+        grid-template-rows: minmax(min-content, 1fr);
+    }
+}
