@@ -44,3 +44,10 @@ if (elements.length > 0) {
     }
   }
 }
+// I tried to use the following to hide the content but my sass compiler wouldn't compile it. Appraently it is valid and supported though https://caniuse.com/?search=line-clamp
+.your-element {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;      /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
